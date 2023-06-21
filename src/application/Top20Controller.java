@@ -67,6 +67,8 @@ public class Top20Controller {
 
 		reader.close();
 		
+		top20ListView.getItems().add("The Top 20 Words With The Highest Occurences Are:");
+		
 		LinkedHashMap<String, Integer> sortedMap = wordFreq.entrySet().stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(20)
 				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e1, LinkedHashMap::new));

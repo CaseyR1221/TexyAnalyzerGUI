@@ -67,6 +67,8 @@ public class AllWordsController {
 
 		reader.close();
 		
+		allWordsListView.getItems().add("All Words In Order Of Highest Occurence Are:");
+		
 		LinkedHashMap<String, Integer> sortedMap = wordFreq.entrySet().stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e1, LinkedHashMap::new));
