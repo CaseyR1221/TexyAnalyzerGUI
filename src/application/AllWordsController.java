@@ -67,17 +67,14 @@ public class AllWordsController {
 
 		reader.close();
 		
-		System.out.println("All Words From The Poem Sorted By Highest Frequency:");
-		System.out.println("");
-		
 		LinkedHashMap<String, Integer> sortedMap = wordFreq.entrySet().stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e1, LinkedHashMap::new));
 
 		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
-			System.out.println(entry.getKey() + ": " + entry.getValue());
 			
 			allWordsListView.getItems().add(entry.getKey() + ": " + entry.getValue());
+			
 		}
 	}
 }

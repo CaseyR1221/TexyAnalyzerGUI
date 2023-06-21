@@ -67,17 +67,14 @@ public class Top20Controller {
 
 		reader.close();
 		
-		System.out.println("The 20 Words With The Highest Frequencies:");
-		System.out.println("");
-		
 		LinkedHashMap<String, Integer> sortedMap = wordFreq.entrySet().stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(20)
 				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e1, LinkedHashMap::new));
 
 		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
-			System.out.println(entry.getKey() + ": " + entry.getValue());
 			
 			top20ListView.getItems().add(entry.getKey() + ": " + entry.getValue());
+			
 		}
 	}
 
