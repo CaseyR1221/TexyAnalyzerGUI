@@ -18,7 +18,7 @@ public class MainController {
 	
 	@FXML
 	private void switchToTop20(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("Top20.fxml"));
+		root = FXMLLoader.load(getClass().getResource("Top20.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

@@ -29,7 +29,7 @@ public class Top20Controller {
 	
 	@FXML
 	private void switchToAllWords(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("AllWords.fxml"));
+		root = FXMLLoader.load(getClass().getResource("AllWords.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
