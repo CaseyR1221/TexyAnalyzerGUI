@@ -27,6 +27,8 @@ public class Top20Controller {
 	@FXML
 	private ListView<String> top20ListView;
 	
+	private LinkedHashMap<String, Integer> top20SortedMap;
+	
 	@FXML
 	private void switchToAllWords(ActionEvent event) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("AllWords.fxml"));
@@ -45,7 +47,7 @@ public class Top20Controller {
 		stage.show();
 	}
 	
-	public void runTop20() throws IOException {
+	public LinkedHashMap<String, Integer> runTop20() throws IOException {
 
 		// Read each line of the file
 		BufferedReader reader = new BufferedReader(new FileReader("src/textFile.txt"));
@@ -69,15 +71,17 @@ public class Top20Controller {
 		
 		top20ListView.getItems().add("The Top 20 Words With The Highest Occurences Are:");
 		
-		LinkedHashMap<String, Integer> sortedMap = wordFreq.entrySet().stream()
+		top20SortedMap = wordFreq.entrySet().stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(20)
 				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e1, LinkedHashMap::new));
 
-		for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+		for (Map.Entry<String, Integer> entry : top20SortedMap.entrySet()) {
 			
 			top20ListView.getItems().add(entry.getKey() + ": " + entry.getValue());
 			
 		}
+		
+		return top20SortedMap;
 	}
 
 }

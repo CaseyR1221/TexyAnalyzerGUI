@@ -45,7 +45,7 @@ public class AllWordsController {
 		stage.show();
 	}
 	
-	public void runAllWords() throws IOException {
+	public LinkedHashMap<String, Integer> runAllWords() throws IOException {
 
 		// Read each line of the file
 		BufferedReader reader = new BufferedReader(new FileReader("src/textFile.txt"));
@@ -78,5 +78,7 @@ public class AllWordsController {
 			allWordsListView.getItems().add(entry.getKey() + ": " + entry.getValue());
 			
 		}
+		
+		return sortedMap;
 	}
 }
